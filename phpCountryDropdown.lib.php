@@ -23,22 +23,39 @@
 	 */
 	function phpCountryDropdown($currentValue = null, $shortCodeValues = true, $name = 'country', $id = 'countryDropdown', $html = '') {
 	
-		return '<select name="' . $name . '" id="' . $id . '" ' . $html . '>' . phpCountryDropdownOptions($shortcodeValues, $currentValue) . '</select>';
+		return phpLocationDropdown(getCountryArray(), $currentValue, $shortCodeValues, $name, $id, $html);
+	
+	}
+	
+	/**
+	 * Draws a select box containing US States.
+	 *
+	 * @param $currentValue The current value - either the name of the country or the country shortcode. Defaults to null.
+	 * @param $shortCodeValues If set to true, values passed on form submission will be the country shortcode. Full name otherwise. Defaults to true.
+	 * @param $name The name of the select form element. Defaults to 'country'.
+	 * @param $id The ID of the select form element. Defaults to 'countryDropdown'.
+	 * @param $html Any other arbitrary HTML for inclusion in the initial <select> tag.
+	 * @return string The country dropdown. 
+	 */
+	function phpUSStateDropdown($currentValue = null, $shortCodeValues = true, $name = 'country', $id = 'countryDropdown', $html = '') {
+	
+		return phpLocationDropdown(getUSStatesArray(), $currentValue, $shortCodeValues, $name, $id, $html);
 	
 	}
 	
 	/**
 	 * Returns a list of countries for inclusion in a select tag.
+	 * @param $locaitons The list of locations to use, with shortcodes as the key and the full names as the value
 	 * @param $currentValue The current value - either the name of the country or the country shortcode. Defaults to null.
 	 * @param $shortCodeValues If set to true, values passed on form submission will be the country shortcode. Full name otherwise. Defaults to true.
 	 * @return string The options to include.
 	 */
-	function phpCountryDropdownOptions($shortcodeValues = true, $currentValue = null) {
+	function phpLocationDropdownOptions($locations, $shortcodeValues = true, $currentValue = null) {
 	
 		$currentValue = strtolower($currentValue);
 		$options = '';
 	
-		foreach(getCountryArray() as $shortcode => $name) {
+		foreach($locations as $shortcode => $name) {
 			$options .= '<option value="';
 			if ($shortcodeValues) $options .= $shortcode; else $options .= $name;
 			$options .= '"';
@@ -47,6 +64,23 @@
 		}
 		
 		return $options;
+	
+	}
+
+	/**
+	 * Draws a select box containing arbitrary locale information.
+	 *
+	 * @param $locaitons The list of locations to use, with shortcodes as the key and the full names as the value
+	 * @param $currentValue The current value - either the name of the country or the country shortcode. Defaults to null.
+	 * @param $shortCodeValues If set to true, values passed on form submission will be the country shortcode. Full name otherwise. Defaults to true.
+	 * @param $name The name of the select form element. Defaults to 'country'.
+	 * @param $id The ID of the select form element. Defaults to 'countryDropdown'.
+	 * @param $html Any other arbitrary HTML for inclusion in the initial <select> tag.
+	 * @return string The country dropdown. 
+	 */
+	function phpLocationDropdown($locations, $currentValue = null, $shortCodeValues = true, $name = 'country', $id = 'countryDropdown', $html = '') {
+	
+		return '<select name="' . $name . '" id="' . $id . '" ' . $html . '>' . phpLocationDropdownOptions($locations, $shortcodeValues, $currentValue) . '</select>';
 	
 	}
 	
@@ -298,5 +332,68 @@
 			'ZM' => 'Zambia',
 			'ZW' => 'Zimbabwe'
 		);
+		
+	}
+		
+	/**
+	 * Retrieves a list of US States in an array, with the State
+	 * shortcode as the key.
+	 */
+	function getUSStatesArray() {
 	
+		return array(
+			'AL'=>'Alabama',
+			'AK'=>'Alaska',
+			'AZ'=>'Arizona',
+			'AR'=>'Arkansas',
+			'CA'=>'California',
+			'CO'=>'Colorado',
+			'CT'=>'Connecticut',
+			'DE'=>'Delaware',
+			'DC'=>'District Of Columbia',
+			'FL'=>'Florida',
+			'GA'=>'Georgia',
+			'HI'=>'Hawaii',
+			'ID'=>'Idaho',
+			'IL'=>'Illinois', 
+			'IN'=>'Indiana',
+			'IA'=>'Iowa',
+			'KS'=>'Kansas',
+			'KY'=>'Kentucky',
+			'LA'=>'Louisiana',
+			'ME'=>'Maine',
+			'MD'=>'Maryland',
+			'MA'=>'Massachusetts',
+			'MI'=>'Michigan',
+			'MN'=>'Minnesota',
+			'MS'=>'Mississippi',
+			'MO'=>'Missouri',
+			'MT'=>'Montana',
+			'NE'=>'Nebraska',
+			'NV'=>'Nevada',
+			'NH'=>'New Hampshire',
+			'NJ'=>'New Jersey',
+			'NM'=>'New Mexico',
+			'NY'=>'New York',
+			'NC'=>'North Carolina',
+			'ND'=>'North Dakota',
+			'OH'=>'Ohio',
+			'OK'=>'Oklahoma', 
+			'OR'=>'Oregon',
+			'PA'=>'Pennsylvania',
+			'RI'=>'Rhode Island',
+			'SC'=>'South Carolina',
+			'SD'=>'South Dakota',
+			'TN'=>'Tennessee',
+			'TX'=>'Texas',
+			'UT'=>'Utah',
+			'VT'=>'Vermont',
+			'VA'=>'Virginia',
+			'WA'=>'Washington',
+			'WV'=>'West Virginia',
+			'WI'=>'Wisconsin',
+			'WY'=>'Wyoming',
+			'NA'=>'Not applicable',
+		);
+
 	}

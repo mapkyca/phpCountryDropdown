@@ -11,3 +11,4 @@
 	// This will draw a country dropdown with the name 'country', with
 	// the US selected as the default country.
 		echo phpCountryDropdown('us');
+		echo phpUSStateDropdown('na');
