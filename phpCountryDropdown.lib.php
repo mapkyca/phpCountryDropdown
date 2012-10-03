@@ -32,12 +32,12 @@
 	 *
 	 * @param $currentValue The current value - either the name of the country or the country shortcode. Defaults to null.
 	 * @param $shortCodeValues If set to true, values passed on form submission will be the country shortcode. Full name otherwise. Defaults to true.
-	 * @param $name The name of the select form element. Defaults to 'country'.
-	 * @param $id The ID of the select form element. Defaults to 'countryDropdown'.
+	 * @param $name The name of the select form element. Defaults to 'stateUS'.
+	 * @param $id The ID of the select form element. Defaults to 'stateUSDropdown'.
 	 * @param $html Any other arbitrary HTML for inclusion in the initial <select> tag.
 	 * @return string The country dropdown. 
 	 */
-	function phpUSStateDropdown($currentValue = null, $shortCodeValues = true, $name = 'country', $id = 'countryDropdown', $html = '') {
+	function phpUSStateDropdown($currentValue = null, $shortCodeValues = true, $name = 'stateUS', $id = 'stateUSDropdown', $html = '') {
 	
 		return phpLocationDropdown(getUSStatesArray(), $currentValue, $shortCodeValues, $name, $id, $html);
 	
