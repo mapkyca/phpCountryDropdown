@@ -80,7 +80,7 @@
 	 */
 	function phpLocationDropdown($locations, $currentValue = null, $shortCodeValues = true, $name = 'country', $id = 'countryDropdown', $html = '') {
 	
-		return '<select name="' . $name . '" id="' . $id . '" ' . $html . '>' . phpLocationDropdownOptions($locations, $shortcodeValues, $currentValue) . '</select>';
+		return '<select name="' . $name . '" id="' . $id . '" ' . $html . '>' . phpLocationDropdownOptions($locations, $shortCodeValues, $currentValue) . '</select>';
 	
 	}
 	
